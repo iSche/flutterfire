@@ -697,6 +697,7 @@ class FirebaseAuth extends FirebasePluginPlatform {
     @visibleForTesting String? autoRetrievedSmsCodeForTesting,
     Duration timeout = const Duration(seconds: 30),
     int? forceResendingToken,
+    MultiFactorSession? multiFactorSession,
   }) {
     return _delegate.verifyPhoneNumber(
       phoneNumber: phoneNumber,
@@ -708,6 +709,7 @@ class FirebaseAuth extends FirebasePluginPlatform {
       codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
       // ignore: invalid_use_of_visible_for_testing_member
       autoRetrievedSmsCodeForTesting: autoRetrievedSmsCodeForTesting,
+      multiFactorSession: multiFactorSession,
     );
   }
 
