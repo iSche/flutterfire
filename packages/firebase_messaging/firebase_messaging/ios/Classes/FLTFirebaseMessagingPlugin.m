@@ -484,9 +484,9 @@ NSString *const kMessagingPresentationOptionsUserDefaults =
     } else {
       // If "alert" (i.e. notification) is present in userInfo, this will be called by the other
       // "Messaging#onMessage" channel handler
-      if (userInfo[@"aps"] != nil && userInfo[@"aps"][@"alert"] == nil) {
+      //if (userInfo[@"aps"] != nil && userInfo[@"aps"][@"alert"] == nil) {
         [_channel invokeMethod:@"Messaging#onMessage" arguments:notificationDict];
-      }
+      //}
       completionHandler(UIBackgroundFetchResultNoData);
     }
 
