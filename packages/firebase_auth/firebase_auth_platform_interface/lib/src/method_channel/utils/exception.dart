@@ -38,6 +38,9 @@ FirebaseException platformExceptionToFirebaseAuthException(
   String? email;
   AuthCredential? credential;
 
+  print(message);
+  print(platformException);
+
   if (details != null) {
     code = details['code'] ?? code;
     message = details['message'] ?? message;

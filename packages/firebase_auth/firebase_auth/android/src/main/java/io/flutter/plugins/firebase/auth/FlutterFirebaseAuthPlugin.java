@@ -31,6 +31,7 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthMultiFactorException;
 import com.google.firebase.auth.FirebaseAuthProvider;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.FirebaseUserMetadata;
@@ -39,6 +40,7 @@ import com.google.firebase.auth.GithubAuthProvider;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.MultiFactor;
 import com.google.firebase.auth.MultiFactorAssertion;
+import com.google.firebase.auth.MultiFactorResolver;
 import com.google.firebase.auth.MultiFactorSession;
 import com.google.firebase.auth.OAuthProvider;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -809,6 +811,11 @@ public class FlutterFirebaseAuthPlugin
 
           taskCompletionSource.setResult(parseAuthResult(authResult));
         } catch (Exception e) {
+          if (e.getCause() instanceof FirebaseAuthMultiFactorException) {
+            MultiFactorResolver multiFactorResolver = ((FirebaseAuthMultiFactorException) e.getCause()).getResolver();
+            final List a = multiFactorResolver.getHints();
+a.size();
+          }
           taskCompletionSource.setException(e);
         }
       });
